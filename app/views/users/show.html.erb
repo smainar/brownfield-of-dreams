@@ -7,15 +7,27 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
+
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+
   <section id="github">
     <h1>Github</h1>
+    
     <h3>Github Repos</h3>
     <% facade.user_repos.each do |repo| %>
       <ul class="github-repos">
         <li><%= link_to repo.name, repo.url %></li>
+      </ul>
+    <% end %>
+  </section>
+
+  <h3>Followers</h3>
+  <section>
+    <% facade.user_github_followers.each do |follower| %>
+      <ul class="github-followers">
+        <li><%= link_to follower.handle, follower.url %></li>
       </ul>
     <% end %>
   </section>
