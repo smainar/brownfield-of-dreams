@@ -19,4 +19,13 @@
       </ul>
     <% end %>
   </section>
+  <section>
+    <h3>Followers</h3>
+      <% facade.user_github_followers.each do |follower| %>
+        <ul class="github_followers">
+          <% binding.pry %>
+          <li><%= link_to follower.name, follower.url %></li>
+        </ul>
+      <% end %>
+  </section>
 </section>
