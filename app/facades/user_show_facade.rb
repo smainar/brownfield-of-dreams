@@ -14,8 +14,16 @@ class UserShowFacade
   def user_github_followers
     connection = GithubService.new.create_github_followers
 
-    connection.map do |follower|
-      GithubUser.new(follower)
+    connection.map do |f|
+      GithubUser.new(f)
+    end
+  end
+
+  def user_github_following
+    connection = GithubService.new.create_github_following
+
+    connection.map do |f|
+      GithubUser.new(f)
     end
   end
 

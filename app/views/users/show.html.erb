@@ -14,7 +14,7 @@
 
   <section id="github">
     <h1>Github</h1>
-    
+
     <h3>Github Repos</h3>
     <% facade.user_repos.each do |repo| %>
       <ul class="github-repos">
@@ -28,6 +28,15 @@
     <% facade.user_github_followers.each do |follower| %>
       <ul class="github-followers">
         <li><%= link_to follower.handle, follower.url %></li>
+      </ul>
+    <% end %>
+  </section>
+
+  <h3>Following</h3>
+  <section>
+    <% facade.user_github_following.each do |following| %>
+      <ul class="github-following">
+        <li><%= link_to following.handle, following.url %></li>
       </ul>
     <% end %>
   </section>

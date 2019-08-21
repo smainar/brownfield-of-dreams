@@ -12,7 +12,7 @@ describe 'As a User on my dashboard page' do
       expect(page).to have_css('.github-following', count: 5)
 
       within(first('.github-following')) do
-        expect(page).to have_link("kylecornelissen")
+        expect(page).to have_link("joequincy")
       end
     end
   end
