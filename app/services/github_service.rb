@@ -1,7 +1,4 @@
 class GithubService
-  def initialize
-  end
-
   def create_repo
     get_json("/user/repos")
   end
