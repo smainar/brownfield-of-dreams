@@ -13,13 +13,11 @@ describe 'A User on dashboard page' do
 
       visit '/dashboard'
 
-      within('#github_followers') do
-        expect(page).to have_content('Followers')
-        expect(page.all('.follower_list').count).to eq(5)
-        within(first('.follower_list')) do
-          expect(page).to have_link("kylecornelissen")
-        end
-      end
+      expect(page).to have_content('Followers')
+
+      expect(page).to have_css('.github_followers', count: 5)
+
+      expect(page).to have_link("kylecornelissen")
     # end
   end
 end

@@ -1,5 +1,5 @@
 class GithubUser
-  attr_reader :name,
+  attr_reader :handle,
               :url
 
   def initialize(user_info)

@@ -13,11 +13,11 @@ class UserShowFacade
 
   def user_github_followers
     connection = GithubService.new.show_followers
-    array = []
-    connection.each do |f|
-       array << GithubUser.new(f)
+
+    connection.map do |f|
+       GithubUser.new(f)
     end
-    binding.pry
+
   end
 
   private
