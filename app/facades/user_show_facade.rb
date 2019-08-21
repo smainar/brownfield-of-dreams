@@ -11,6 +11,14 @@ class UserShowFacade
     end
   end
 
+  def user_github_followers
+    connection = GithubService.new.create_github_followers
+
+    connection.map do |follower|
+      GithubUser.new(follower)
+    end
+  end
+
   private
     attr_reader :user
 end
