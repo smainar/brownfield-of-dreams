@@ -11,6 +11,6 @@ class UserShowFacade
     end
   end
 
-    private
-     attr_reader :user
+  private
+    attr_reader :user
 end
