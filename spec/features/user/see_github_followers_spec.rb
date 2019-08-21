@@ -16,8 +16,10 @@ describe 'A User on dashboard page' do
       expect(page).to have_content('Followers')
 
       expect(page).to have_css('.github_followers', count: 5)
-
-      expect(page).to have_link("kylecornelissen")
+save_and_open_page
+      within(first('.github_followers')) do
+        expect(page).to have_link("kylecornelissen")
+      end
     # end
   end
 end
