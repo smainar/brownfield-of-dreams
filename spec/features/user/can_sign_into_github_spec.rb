@@ -12,11 +12,11 @@ describe "User on dashboard" do
 
       expect(page).to_not have_content("Github")
 
-      click_button "Connect with Github"
+      click_button "Connect to Github"
 
       expect(current_path).to eq(dashboard_path)
 
-      expect(page).to_not have_content("Github")
+      expect(page).to have_content("Github")
 
       expect(page).to have_css(".github-repos", count: 5)
 
