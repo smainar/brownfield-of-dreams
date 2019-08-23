@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_22_010312) do
+ActiveRecord::Schema.define(version: 2019_08_23_204003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_010312) do
     t.datetime "updated_at", null: false
     t.string "github_id"
     t.string "github_token"
+    t.string "github_handle"
+    t.string "github_url"
     t.index ["email"], name: "index_users_on_email"
   end
 
