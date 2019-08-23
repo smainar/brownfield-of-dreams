@@ -8,25 +8,11 @@ class User < ApplicationRecord
   enum role: [:default, :admin]
   has_secure_password
 
-  def self.create_with_omniauth(auth_hash)
-
-    create! do |user|
-      binding.pry
-      user.provider = auth_hash["provider"]
-      user.uid = auth_hash["uid"]
-      user.name = auth_hash["info"]["nickname"]
-    end
+  def update_github_auth(auth_hash)
+    self.github_id = auth_hash['uid']
+    self.github_handle = auth_hash['info']['nickname']
+    self.github_token = auth_hash['credentials']['token']
+    self.github_url = auth_hash['info']['urls']['github']
   end
-
-  # def create_or_find_github_user(auth_hash)
-  #   binding.pry
-  #   create! do |user|
-  #     binding.pry
-  #     user.provider = auth_hash["provider"]
-  #     user.uid = auth_hash["uid"]
-  #     user.name = auth_hash["info"]["nickname"]
-  #   end
-  # end
-
 
 end
