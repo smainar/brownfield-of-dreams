@@ -1,6 +1,6 @@
 class GithubSessionsController < ApplicationController
   def create
-    current_user.update_github_auth(auth_hash)
+    current_user.update_github_oauth(auth_hash)
     redirect_to dashboard_path
   end
 
