@@ -10,4 +10,9 @@ FactoryBot.define do
   factory :admin, parent: :user do
     role { :admin }
   end
+
+  factory :github_user, parent: :user do
+    github_token { ENV['GITHUB_API_KEY'] }
+    github_handle { 'MillsProvsty' }
+  end
 end
