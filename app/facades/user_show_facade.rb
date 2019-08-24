@@ -3,8 +3,12 @@ class UserShowFacade
     @user = current_user
   end
 
+  def github_service
+    GithubService.new(user)
+  end
+
   def user_repos
-    connection = GithubService.new.create_repo
+    connection = github_service.create_repo
 
     connection.map do |r|
       GithubRepo.new(r)
@@ -12,7 +16,7 @@ class UserShowFacade
   end
 
   def user_github_followers
-    connection = GithubService.new.create_github_followers
+    connection = github_service.create_github_followers
 
     connection.map do |follower|
       GithubUser.new(follower)
@@ -20,7 +24,7 @@ class UserShowFacade
   end
 
   def user_github_following
-    connection = GithubService.new.create_github_following
+    connection = github_service.create_github_following
 
     connection.map do |following|
       GithubUser.new(following)
