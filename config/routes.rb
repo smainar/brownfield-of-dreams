@@ -11,8 +11,6 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
   get '/auth/github/callback', to: 'github_sessions#create'
 
-
-
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
