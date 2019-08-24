@@ -13,6 +13,7 @@ FactoryBot.define do
 
   factory :github_user, parent: :user do
     github_token { ENV['GITHUB_API_KEY'] }
-    github_handle { 'MillsProvsty' }
+    github_handle { 'MillsProvosty' }
+    github_id { 01234 }
   end
 end
