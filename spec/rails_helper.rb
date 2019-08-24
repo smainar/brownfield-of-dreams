@@ -55,17 +55,17 @@ end
 
 def test_omniauth
   OmniAuth.config.test_mode = true
-  OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new(
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
         provider: 'github',
         uid: ENV['GITHUB_CLIENT_ID'],
         info: {
           nickname: 'MillsProvosty',
-          url: {
+          urls: {
             GitHub: 'https://github.com/MillsProvosty'
           }
         },
         credentials: {
-          token: ['GITHUB_API_KEY'],
+          token: ENV['GITHUB_API_KEY'],
         }
       )
   end
