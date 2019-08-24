@@ -31,6 +31,9 @@
     <section>
       <% facade.user_github_followers.each do |follower| %>
         <ul class="github-followers">
+        <% if follower.handle %>
+          <%= link_to "Add Friend", class: "btn btn-primary mb1 bg-teal" %>
+        <% end %>
           <li><%= link_to follower.handle, follower.url %></li>
         </ul>
       <% end %>
