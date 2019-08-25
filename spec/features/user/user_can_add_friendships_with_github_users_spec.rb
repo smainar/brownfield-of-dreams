@@ -10,8 +10,8 @@ describe "A Registered Github user" do
 
       user_2 = create(
         :github_user,
-        github_handle: 'smainar',
-        github_url: 'https://github.com/smainar'
+        github_handle: 'kylecornelissen',
+        github_url: 'https://github.com/kylecornelissen'
       )
       user_3 = create(
         :github_user,
@@ -24,11 +24,14 @@ describe "A Registered Github user" do
       visit dashboard_path
 
       within(first('.github-followers')) do
-        expect(page).to have_link("Add Friend")
+        expect(page).to have_button("Add Friend")
         click_on "Add Friend"
       end
 
-      expect(page).to have_content("#{user_2.handle} has been added as friend.")
+      expect(page).to have_content("#{user_2.github_handle} has been added as a friend.")
+
+      user_1.reload
+      visit "/dashboard"
 
       within(first('.github-followers')) do
         expect(page).to_not have_button("Add Friend")
@@ -37,7 +40,7 @@ describe "A Registered Github user" do
       expect(page).to have_content("My Friends")
 
       within(first('.friend-list')) do
-        expect(page).to have_link('smainar')
+        expect(page).to have_link('kylecornelissen')
       end
     # end
   end
