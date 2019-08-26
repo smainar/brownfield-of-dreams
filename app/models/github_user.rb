@@ -7,15 +7,26 @@ class GithubUser
     @url = github_profile[:html_url]
   end
 
-  def friend?(current_user)
-    if !friend_finder(current_user) && self.handle
+  def can_be_friended?(current_user)
+    has_brownfield_account? && !friends_already?(current_user)
+  end
+
+  def has_brownfield_account?
+    follower = User.find_by(github_handle: self.handle)
+    if follower
+      true
+    else
+      false
     end
   end
 
-  def has_github_account?(current_user)
+  def friends_already?(current_user)
     follower = User.find_by(github_handle: self.handle)
-    if follower && Friendship.find_by(user_id: current_user.id, friend_id: follower.id) || Friendship.find_by(friend_id: current_user.id, user_id: follower.id)
-
+    friendship = Friendship.find_by(user_id: current_user.id, friend_id: follower.id) || Friendship.find_by(friend_id: current_user.id, user_id: follower.id)
+    if friendship
+      true
+    else
+      false
     end
   end
 end

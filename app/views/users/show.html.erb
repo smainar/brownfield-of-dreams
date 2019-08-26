@@ -18,7 +18,6 @@
 
     <section id="github">
       <h1>Github</h1>
-
       <h3>Github Repos</h3>
       <% facade.user_repos.each do |repo| %>
         <ul class="github-repos">
@@ -31,8 +30,10 @@
     <section>
       <% facade.user_github_followers.each do |follower| %>
         <ul class="github-followers">
-        <% if follower.friend?(current_user) %>
+          <% if follower.can_be_friended?(current_user) %>
             <li><%= link_to follower.handle, follower.url %>:  <%= button_to "Add Friend", "/friendships/#{follower.handle}", class: "btn btn-primary mb1 bg-teal" %></li>
+        <% else %>
+          <li><%= link_to follower.handle, follower.url %></li>
         <% end %>
         </ul>
       <% end %>
