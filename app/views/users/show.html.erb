@@ -31,7 +31,7 @@
       <% facade.user_github_followers.each do |follower| %>
         <ul class="github-followers">
           <% if follower.can_be_friended?(current_user) %>
-            <li><%= link_to follower.handle, follower.url %>:  <%= button_to "Add Friend", "/friendships/#{follower.handle}", class: "btn btn-primary mb1 bg-teal" %></li>
+            <li><%= link_to follower.handle, follower.url %>  <%= button_to "Add Friend", "/friendships/#{follower.handle}", class: "btn btn-primary mb1 bg-teal" %></li>
         <% else %>
           <li><%= link_to follower.handle, follower.url %></li>
         <% end %>
@@ -41,9 +41,13 @@
 
     <h3>Following</h3>
     <section>
-      <% facade.user_github_following.each do |follow| %>
+      <% facade.user_github_following.each do |followed| %>
         <ul class="github-following">
-          <li><%= link_to follow.handle, follow.url %></li>
+        <% if followed.can_be_friended?(current_user) %>
+          <li><%= link_to followed.handle, followed.url %>  <%= button_to "Add Friend", "/friendships/#{followed.handle}", class: "btn btn-primary mb1 bg-teal" %></li>
+        <% else %>
+          <li><%= link_to followed.handle, followed.url %></li>
+        <% end %>
         </ul>
       <% end %>
     </section>
