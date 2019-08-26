@@ -15,5 +15,6 @@ FactoryBot.define do
     github_token { ENV['GITHUB_API_KEY'] }
     github_handle { 'MillsProvosty' }
     github_id { 01234 }
+    github_url { 'https://github.com/millsprovosty'}
   end
 end
