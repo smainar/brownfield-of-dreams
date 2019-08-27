@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :update, :edit]
   post '/friendships/:new_friend_handle', to: 'friendships#create'
+  get '/user/:user_id/activate_account', to: 'activate_account#create', as: :activate_account
 
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]
