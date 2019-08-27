@@ -116,3 +116,21 @@ m3_tutorial.videos.create!({
 })
 
 User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :admin)
+
+User.create!(email: 'kyle@example.com', first_name: 'Kyle', last_name: 'Cornelissen', password:  "password", role: :default, github_handle: "kylecornelissen")
+
+User.create!(email: 'brian@example.com', first_name: 'Brian', last_name: 'Plantico', password:  "password", role: :default, github_handle: "bplantico")
+
+User.create!(email: 'ryanmillergm@example.com', first_name: 'Ryan', last_name: 'Miller', password:  "password", role: :default, github_handle: "ryanmillergm")
+
+User.create!(email: 'm-mrcr@example.com', first_name: 'Martin', last_name: 'Mercer', password:  "password", role: :default, github_handle: "m-mrcr")
+
+User.create!(email: 'joequincy@example.com', first_name: 'Joe', last_name: 'Quincy', password:  "password", role: :default, github_handle: "joequincy")
+
+User.create!(email: 'WHomer@example.com', first_name: 'William', last_name: 'Homer', password:  "password", role: :default, github_handle: "WHomer")
+
+User.create!(email: 'chakeresa@example.com', first_name: 'Alexandra', last_name: 'Chakeres', password:  "password", role: :default, github_handle: "chakeresa")
+
+User.create!(email: 'n-flint@example.com', first_name: 'Noah', last_name: 'Flint', password:  "password", role: :default, github_handle: "n-flint")
+
+User.create!(email: 'earl-stephens@example.com', first_name: 'Earl', last_name: 'Stephens', password:  "password", role: :default, github_handle: "earl-stephens")
