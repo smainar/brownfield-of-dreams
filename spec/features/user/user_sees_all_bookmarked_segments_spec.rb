@@ -20,24 +20,26 @@ describe "As a logged in user" do
         tutorial_2 = create(:tutorial)
 
         video_4 = create(:video, title: "Title 4", tutorial: tutorial_2, position: 0)
-        video_5 = create(:video, title: "Title 5", tutorial: tutorial_2, position: 2)
-        video_6 = create(:video, title: "Title 6", tutorial: tutorial_2, position: 1)
+        video_5 = create(:video, title: "Title 5", tutorial: tutorial_2, position: 1)
 
         user_video_4 = create(:user_video, user: user, video: video_4)
         user_video_5 = create(:user_video, user: user, video: video_5)
-        user_video_6 = create(:user_video, user: user, video: video_6)
 
         visit "/dashboard"
 
         expect(page).to have_content("Bookmarked Segments")
 
-        within(".bookmarked-videos") do
-          expect(page.all('li')[0]).to have_content(video_1.title)
-          expect(page.all('li')[1]).to have_content(video_3.title)
-          expect(page.all('li')[2]).to have_content(video_2.title)
-          expect(page.all('li')[3]).to have_content(video_4.title)
-          expect(page.all('li')[4]).to have_content(video_6.title)
-          expect(page.all('li')[5]).to have_content(video_5.title)
+        within(first(".bookmarked-tutorials")) do
+          expect(page).to have_content(tutorial_1.title)
+          expect(page.all('li')[0]).to have_link(video_1.title)
+          expect(page.all('li')[1]).to have_link(video_3.title)
+          expect(page.all('li')[2]).to have_link(video_2.title)
+        end
+
+        within(page.all(".bookmarked-tutorials").last) do
+          expect(page).to have_content(tutorial_2.title)
+          expect(page.all('li')[3]).to have_link(video_4.title)
+          expect(page.all('li')[4]).to have_link(video_5.title)
         end
       end
     end
