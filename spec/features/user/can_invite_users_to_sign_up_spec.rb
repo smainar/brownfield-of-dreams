@@ -1,20 +1,24 @@
 require 'rails_helper'
 
 
-describe 'As a registered user (authorized with github) on my dashboard page' do
+describe 'As a registered github user' do
   before(:each) do
-    user = create(:user_with_github)
+    user = create(:github_user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
   end
 
-  xit 'I can invite a github user with a public email' do
-    VCR.use_cassette('invite_github_user', record: :new_episodes) do
+  it 'I can invite another github user with an email' do
+    # VCR.use_cassette('invite_github_user', record: :new_episodes) do
+    WebMock.allow_net_connect!
+    VCR.turn_off!
+
       visit '/dashboard'
       click_link 'Send an Invite'
 
       expect(current_path).to eq('/invite')
 
-      fill_in :github_handle, with: 'chakeresa'
+      fill_in :github_handle, with: 'smanair'
+
       expect do
         click_button 'Send Invite'
         sleep 1
@@ -22,7 +26,7 @@ describe 'As a registered user (authorized with github) on my dashboard page' do
 
       expect(current_path).to eq('/dashboard')
       expect(page).to have_content('Successfully sent invite!')
-    end
+    # end
   end
 
   xit 'I cannot invite a github user with a private email' do

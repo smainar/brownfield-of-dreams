@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   get '/video', to: 'video#show'
 
   resources :users, only: [:new, :create, :update, :edit]
+  get '/invite', to: 'invites#new', as: :invite
+  post '/invite', to: 'invites#create', as: :invites
   post '/friendships/:new_friend_handle', to: 'friendships#create'
 
   resources :tutorials, only: [:show, :index] do

@@ -25,6 +25,7 @@
   <% if !current_user.github_id %>
     <%= link_to "Connect to Github", "/auth/github", class: "btn btn-primary mb1 bg-teal" %>
   <% else %>
+    <%= link_to "Send an Invite", invite_path, class: "btn btn-primary mb1 bg-teal" %>
 
     <section id="github">
       <h1>Github</h1>
