@@ -31,6 +31,10 @@ class UserShowFacade
     end
   end
 
+  def bookmarked_tutorials
+    Tutorial.bookmarked_tutorials(user)
+  end
+
   private
     attr_reader :user
 end
