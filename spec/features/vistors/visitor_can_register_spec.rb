@@ -26,9 +26,9 @@ describe 'visitor can create an account', :js do
 
       expect do
         click_on 'Create Account'
-        sleep 1
       end.to change { ActionMailer::Base.deliveries.count }.by(1)
 
+      click_on 'Create Account'
       expect(current_path).to eq(dashboard_path)
 
       expect(page).to have_content("Logged in as #{email}")
