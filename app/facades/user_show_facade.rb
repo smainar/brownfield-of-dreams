@@ -31,6 +31,10 @@ class UserShowFacade
     end
   end
 
+  def bookmarked_videos
+    Video.bookmarked_videos(user)
+  end
+
   private
     attr_reader :user
 end
