@@ -20,7 +20,7 @@ describe 'As a registered github user' do
       fill_in :github_handle, with: 'smanair'
 
       expect do
-        click_button 'Send Invite'
+        click_button 'Send an Invite'
         sleep 1
       end.to change { ActionMailer::Base.deliveries.count }.by(1)
 
