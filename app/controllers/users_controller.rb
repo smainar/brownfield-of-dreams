@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
+      UserMailer.account_activation_email(user)
       redirect_to dashboard_path
     else
       flash[:error] = 'Username already exists'
@@ -24,6 +25,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
+  end
+
+  def send_account_activation_email(user)
+    UserMailer.account_activation_email(user).deliver_later
+    session[:user_id] = user.id
+    flash[:success] = "Logged in as #{user.email}"
+    flash[:warning] = 'This account has not yet been activated. Please check your email.'
   end
 
 end

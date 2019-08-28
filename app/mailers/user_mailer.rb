@@ -1,9 +1,10 @@
 class UserMailer < ApplicationMailer
-  default from: 'notifications@example.com'
+  default from: "no_reply@BrownfieldOfDreams.com"
 
-  def activation_email(user)
+  def account_activation_email(user)
     @user = user
-    # @url  = 'http://example.com/login'
-    mail(to: @user.email, subject: 'Please Activate Your Account')
+    mail(to: @user.email, subject: "Please Activate Your Account")
   end
+
+
 end
