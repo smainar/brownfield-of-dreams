@@ -8,12 +8,17 @@
     <li> <%= current_user.email%> </li>
   </ul>
 
-  <section class="bookmarked-videos">
+  <section class="bookmarked-tutorials">
     <h1>Bookmarked Segments</h1>
-    <% facade.bookmarked_videos.each do |video| %>
-        <ul>
-          <li>Tutorial: <%= video.tutorial.title %>, Video: <%= video.title %></li>
-        </ul>
+    <%= facade.bookmarked_tutorials.each do |tutorial| %>
+      <h3>Tutorial: <%= link_to tutorial.title, "/tutorials/#{tutorial.id}" %></h3>
+
+      <h4>Video(s):</h4>
+        <% tutorial.videos.each do |video| %>
+            <ul>
+              <li><%= link_to video.title, "/tutorials/#{tutorial.id}/#{video.id}" %></li>
+            </ul>
+        <% end %>
     <% end %>
   </section>
 
