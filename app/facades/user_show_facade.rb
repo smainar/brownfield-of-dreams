@@ -31,8 +31,8 @@ class UserShowFacade
     end
   end
 
-  def bookmarked_videos
-    Video.bookmarked_videos(user)
+  def bookmarked_tutorials
+    Tutorial.bookmarked_tutorials(user)
   end
 
   private
