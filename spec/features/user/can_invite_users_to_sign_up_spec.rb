@@ -7,7 +7,7 @@ describe 'As a registered github user' do
   end
 
   it 'I can invite another github user with an email' do
-    VCR.use_cassette('invite_github_user', record: :new_episodes) do
+    VCR.use_cassette('invite_github_user_visible_email', record: :new_episodes) do
 
 
       visit '/dashboard'
@@ -28,7 +28,7 @@ describe 'As a registered github user' do
   end
 
   it 'I cannot invite a github user with a private email' do
-    VCR.use_cassette('invite_private_github_user', record: :new_episodes) do
+    VCR.use_cassette('invite_user_private_email', record: :new_episodes) do
       visit '/dashboard'
       click_link 'Send an Invite'
 

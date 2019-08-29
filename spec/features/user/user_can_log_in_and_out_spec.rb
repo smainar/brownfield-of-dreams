@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'User' do
   it 'user can sign in' do
-    user = create(:user)
+    user = create(:github_user)
 
     visit '/'
 
