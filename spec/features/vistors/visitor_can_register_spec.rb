@@ -10,7 +10,7 @@ describe 'visitor can create an account', :js do
 
       visit '/'
 
-      click_on 'Sign In'
+      click_on "Sign In"
 
       expect(current_path).to eq(login_path)
 
