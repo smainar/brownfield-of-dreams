@@ -9,8 +9,9 @@ class User < ApplicationRecord
   has_many :inverse_friends, through: :inverse_friendships, source: :user
 
   validates :email, uniqueness: true, presence: true
-  validates_presence_of :password, on: :create
+  validates_presence_of :password_digest, on: :create
   validates_presence_of :first_name
+  validates_presence_of :last_name
   enum role: [:default, :admin]
   has_secure_password
 
