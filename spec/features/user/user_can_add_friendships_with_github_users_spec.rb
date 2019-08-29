@@ -1,7 +1,9 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-describe "A Registered Github user" do
-  it "can add other registered github users as friends" do
+require 'rails_helper'
+
+describe 'A Registered Github user' do
+  it 'can add other registered github users as friends' do
     VCR.use_cassette('github_user_friends', record: :new_episodes) do
       user_1 = create(:github_user)
 
@@ -38,22 +40,23 @@ describe "A Registered Github user" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
-      visit "/dashboard"
+      visit '/dashboard'
 
       within(page.all('.github-followers')[1]) do
-        expect(page).to have_button("Add Friend")
-        click_on "Add Friend"
+        expect(page).to have_button('Add Friend')
+        click_on 'Add Friend'
       end
 
       expect(page).to have_content("#{user_3.github_handle} has been added as a friend.")
+
       user_1.reload
-      visit "/dashboard"
+      visit '/dashboard'
 
       within(first('.github-followers')) do
-        expect(page).to_not have_button("Add Friend")
+        expect(page).to_not have_button('Add Friend')
       end
 
-      expect(page).to have_content("My Friends")
+      expect(page).to have_content('My Friends')
 
       within(page.all('.friend-list')[1]) do
         expect(page).to have_link('bplantico')

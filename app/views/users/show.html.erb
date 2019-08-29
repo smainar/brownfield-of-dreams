@@ -8,13 +8,24 @@
     <li> <%= current_user.email%> </li>
   </ul>
 
-  <section>
+  <section class="bookmarked-tutorials">
     <h1>Bookmarked Segments</h1>
+    <% facade.bookmarked_tutorials.each do |tutorial| %>
+      <h3>Tutorial: <%= link_to tutorial.title, "/tutorials/#{tutorial.id}" %></h3>
+
+      <h4>Video(s):</h4>
+        <% tutorial.videos.each do |video| %>
+            <ul>
+              <li><%= link_to video.title, "/tutorials/#{tutorial.id}/#{video.id}" %></li>
+            </ul>
+        <% end %>
+    <% end %>
   </section>
 
   <% if !current_user.github_id %>
     <%= link_to "Connect to Github", "/auth/github", class: "btn btn-primary mb1 bg-teal" %>
   <% else %>
+    <%= link_to "Send an Invite", invite_path, class: "btn btn-primary mb1 bg-teal" %>
 
     <section id="github">
       <h1>Github</h1>

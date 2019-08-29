@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = true
@@ -60,4 +62,8 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.action_mailer.default_url_options = { host: 'localhost' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
 end
