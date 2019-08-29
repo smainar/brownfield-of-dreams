@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
 
+  get '/bookmarks', to: 'user_videos#bookmark', as: :error_bookmark
+
   # Is this being used?
   get '/video', to: 'video#show'
 
