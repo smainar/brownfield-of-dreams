@@ -12,7 +12,11 @@ class Invite
     #send invite email through usermailer with both handles and the invitees email
     #add a flash message
     #search for missing email
-    GithubService.new(@current_user.github_token)
+    invitee_info = GithubService.new(@invitee_github_handle)
+    binding.pry
+    inviter_handle = GithubService.new(@current_user.github_token).first[:owner][:login]
+binding.pry
+    # ActionMailer.send_invite(inviter_handle)
   end
 
   private

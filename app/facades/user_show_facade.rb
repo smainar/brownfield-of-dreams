@@ -3,10 +3,6 @@ class UserShowFacade
     @user = current_user
   end
 
-  def github_service
-    GithubService.new(user)
-  end
-
   def user_repos
     connection = github_service.create_repo
 
@@ -36,5 +32,10 @@ class UserShowFacade
   end
 
   private
+
+    def github_service
+      @github_service ||= GithubService.new(user)
+    end
+
     attr_reader :user
 end
