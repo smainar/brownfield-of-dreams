@@ -8,8 +8,8 @@ describe 'An Admin receives a flash message when they cannot tutorial' do
 
   scenario 'by adding a video', :js do
     VCR.use_cassette('admin_edit_tutorial', record: :new_episodes) do
-      allow_any_instance_of(ApplicationController)
-      .to receive(:current_user).and_return(admin)
+      allow_any_instance_of(ApplicationController).to
+      receive(:current_user).and_return(admin)
 
       visit edit_admin_tutorial_path(tutorial)
 

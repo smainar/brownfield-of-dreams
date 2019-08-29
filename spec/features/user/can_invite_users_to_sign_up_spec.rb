@@ -5,8 +5,8 @@ require 'rails_helper'
 describe 'As a registered github user' do
   before(:each) do
     user = create(:github_user)
-    allow_any_instance_of(ApplicationController)
-    .to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to
+    receive(:current_user).and_return(user)
   end
 
   it 'I can invite another github user with an email' do

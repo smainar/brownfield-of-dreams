@@ -7,8 +7,8 @@ describe 'User on dashboard' do
     VCR.use_cassette('user_sees_repos', record: :new_episodes) do
       user = create(:github_user)
 
-      allow_any_instance_of(ApplicationController)
-      .to receive(:current_user).and_return(user)
+      allow_any_instance_of(ApplicationController).to
+      receive(:current_user).and_return(user)
 
       visit '/dashboard'
 
