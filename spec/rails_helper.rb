@@ -1,10 +1,9 @@
 require 'spec_helper'
 
-
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
-
+SimpleCov.start
 
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
@@ -20,8 +19,10 @@ VCR.configure do |config|
   config.filter_sensitive_data("<GITHUB_API_KEY>") { ENV['GITHUB_API_KEY'] }
   config.filter_sensitive_data("<GITHUB_CLIENT_ID>") { ENV['GITHUB_CLIENT_ID'] }
   config.filter_sensitive_data("<GITHUB_CLIENT_SECRET>") { ENV['GITHUB_CLIENT_SECRET'] }
+  config.filter_sensitive_data('<SENDGRID_API_KEY>') { ENV['SENDGRID_API_KEY'] }
 end
 
+Webdrivers.cache_time = 60
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -35,7 +36,6 @@ Capybara.configure do |config|
   config.default_max_wait_time = 5
 end
 
-SimpleCov.start "rails"
 
 Shoulda::Matchers.configure do |config|
     config.integrate do |with|

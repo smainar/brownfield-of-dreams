@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 describe 'As a registered github user' do
   before(:each) do
     user = create(:github_user)
@@ -17,7 +16,7 @@ describe 'As a registered github user' do
 
       expect(current_path).to eq('/invite')
 
-      fill_in :github_handle, with: 'smanair'
+      fill_in :github_handle, with: 'chakeresa'
 
       expect do
         click_button 'Send an Invite'

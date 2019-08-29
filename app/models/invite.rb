@@ -13,10 +13,10 @@ class Invite
     #add a flash message
     #search for missing email
     invitee_info = GithubService.new(@invitee_github_handle)
-    binding.pry
-    inviter_handle = GithubService.new(@current_user.github_token).first[:owner][:login]
+    inviter_info = GithubService.new(@current_user)
+
 binding.pry
-    # ActionMailer.send_invite(inviter_handle)
+    ActionMailer.send_invite(inviter_handle)
   end
 
   private
