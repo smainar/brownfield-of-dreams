@@ -10,7 +10,7 @@
 
   <section class="bookmarked-tutorials">
     <h1>Bookmarked Segments</h1>
-    <%= facade.bookmarked_tutorials.each do |tutorial| %>
+    <% facade.bookmarked_tutorials.each do |tutorial| %>
       <h3>Tutorial: <%= link_to tutorial.title, "/tutorials/#{tutorial.id}" %></h3>
 
       <h4>Video(s):</h4>

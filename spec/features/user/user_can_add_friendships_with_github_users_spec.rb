@@ -47,8 +47,8 @@ describe 'A Registered Github user' do
         click_on 'Add Friend'
       end
 
-      expect(page).to
-      have_content("#{user_3.github_handle} has been added as a friend.")
+      expect(page).to have_content("#{user_3.github_handle} has been added as a friend.")
+
       user_1.reload
       visit '/dashboard'
 

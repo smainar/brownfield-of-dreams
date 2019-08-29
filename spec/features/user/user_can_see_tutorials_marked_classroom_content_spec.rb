@@ -7,8 +7,7 @@ describe 'As a logged in user', type: :feature do
     it "tutorials marked as 'classroom content' are viewable only if the user is logged in" do
       VCR.use_cassette('logged_in_user_sees_classroom_content', record: :new_episodes) do
         user = create(:user)
-        allow_any_instance_of(ApplicationController).to
-        receive(:current_user).and_return(user)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
         tutorial_1 = create(:tutorial, classroom: true)
         tutorial_2 = create(:tutorial, classroom: true)

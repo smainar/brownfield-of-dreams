@@ -7,8 +7,7 @@ describe 'As a logged in user' do
     it 'I should see a list of all bookmarked segments under the Bookmarked Segments section' do
       VCR.use_cassette('user_bookmarked_videos', record: :new_episodes) do
         user = create(:user)
-        allow_any_instance_of(ApplicationController).to
-        receive(:current_user).and_return(user)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
         tutorial_1 = create(:tutorial)
 
