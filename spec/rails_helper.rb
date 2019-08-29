@@ -72,6 +72,6 @@ def test_omniauth
       token: ENV['GITHUB_API_KEY']
     }
   )
-  end
+end
 
 ActionMailer::Base.delivery_method = :test

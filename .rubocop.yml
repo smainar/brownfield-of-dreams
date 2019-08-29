@@ -15,11 +15,15 @@ Style/Documentation:
 Style/ClassAndModuleChildren:
   Enabled: false
 
+Style/Encoding:
+  Enabled: false
+
 Naming/VariableNumber:
   Exclude:
-    - spec/models/**
-    - spec/features/vistors/**
-
+    - 'spec/models/**'
+    - 'spec/features/vistors/**'
+    - 'spec/features/user/**'
+    
 Naming/MemoizedInstanceVariableName:
   Exclude:
     - 'app/controllers/sessions_controller.rb'
@@ -40,6 +44,7 @@ Lint/UselessAssignment:
     - 'spec/models/tutorial_spec.rb'
     - 'spec/requests/api/v1/**'
     - 'spec/presenters/**'
+    - 'spec/features/user/**'
 
 Layout/MultilineMethodCallIndentation:
   Exclude:
@@ -51,20 +56,24 @@ Metrics/BlockLength:
     - 'spec/mailers/**'
     - 'spec/models/**'
     - 'spec/features/user/**'
-    - 'spec/features/visitor/**'
+    - 'spec/features/visitors/**'
     - 'spec/presenters/**'
     - 'spec/requests/api/v1/**'
     - 'spec/services/**'
     - 'lib/tasks/**'
+    - 'spec/features/vistors/visitor_can_register_spec.rb'
+    - 'spec/features/user/user_sees_all_bookmarked_segments_spec.rb'
 
 Metrics/LineLength:
   Exclude:
     - 'lib/tasks/youtube_seed.rake'
     - 'spec/rails_helper.rb'
     - 'spec/models/**'
-    - 'spec/features/user/user_can_invite_github_users_to_our_site_spec.rb'
-    - 'app/models/invite_maker.rb'
-    - 'app/controllers/admin/api/v1/tutorial_sequencer_controller.rb'
+    - 'app/controllers/**'
+    - 'spec/features/vistors/visitor_can_register_spec.rb'
+    - 'spec/features/user/**'
+    - 'spec/features/admin/**'
+    - 'config/environments/**'
 
 Metrics/MethodLength:
   Exclude:
