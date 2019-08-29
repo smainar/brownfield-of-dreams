@@ -23,7 +23,7 @@ Naming/VariableNumber:
     - 'spec/models/**'
     - 'spec/features/vistors/**'
     - 'spec/features/user/**'
-    
+
 Naming/MemoizedInstanceVariableName:
   Exclude:
     - 'app/controllers/sessions_controller.rb'
@@ -45,10 +45,20 @@ Lint/UselessAssignment:
     - 'spec/requests/api/v1/**'
     - 'spec/presenters/**'
     - 'spec/features/user/**'
+    - 'spec/features/admin/**'
 
 Layout/MultilineMethodCallIndentation:
   Exclude:
     - 'spec/features/vistors/**'
+
+Lint/ShadowingOuterLocalVariable:
+  Exclude:
+    - 'app/services/tutorial_sequencer.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/admin/videos_controller.rb'
+    - 'app/controllers/friendships_controller.rb'
 
 Metrics/BlockLength:
   Exclude:
@@ -74,7 +84,25 @@ Metrics/LineLength:
     - 'spec/features/user/**'
     - 'spec/features/admin/**'
     - 'config/environments/**'
+    - 'app/models/user.rb'
+    - 'spec/factories/tutorials.rb'
+    - 'app/models/github_user.rb'
+    - 'app/controllers/admin/**'
+    - 'app/mailers/user_mailer.rb'
+    - 'Rakefile'
+    - 'app/controllers/admin/api/v1/tutorial_sequencer_controller.rb'
 
 Metrics/MethodLength:
   Exclude:
     - 'spec/rails_helper.rb'
+    - 'app/controllers/friendships_controller.rb'
+    - 'app/controllers/admin/api/v1/tutorial_sequencer_controller.rb'
+    - 'app/mailers/user_mailer.rb'
+
+Style/IdenticalConditionalBranches:
+  Exclude:
+    - 'app/controllers/friendships_controller.rb'
+
+Naming/PredicateName:
+  Exclude:
+    - 'app/models/github_user.rb'
