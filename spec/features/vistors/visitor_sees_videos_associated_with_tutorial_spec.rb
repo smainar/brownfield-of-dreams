@@ -26,7 +26,8 @@ describe 'As a visitor', type: :feature do
 
       visit tutorial_path(tutorial)
 
-      expect(page).to have_content('Currently, there are no videos for this tutorial.')
+      expect(page)
+      .to have_content('Currently, there are no videos for this tutorial.')
     end
   end
 end
