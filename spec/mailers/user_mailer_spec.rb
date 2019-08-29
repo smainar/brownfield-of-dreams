@@ -10,7 +10,7 @@ RSpec.describe UserMailer, type: :mailer do
       expect(@email.subject).to eq("Please Activate Your Account")
       expect(@email.to).to eq([@user.email])
       expect(@email.from).to eq(['no_reply@brownfieldofdreams.com'])
-      expect(@email.body.encoded) .to match("Click here to activate your account:")
+      expect(@email.body.encoded).to match("Click here to activate your account:")
     end
   end
 end
