@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GithubUser
   attr_reader :handle,
               :url
@@ -12,7 +14,7 @@ class GithubUser
   end
 
   def has_brownfield_account?
-    follower = User.find_by(github_handle: self.handle)
+    follower = User.find_by(github_handle: handle)
     if follower
       true
     else
@@ -21,7 +23,7 @@ class GithubUser
   end
 
   def friends_already?(current_user)
-    follower = User.find_by(github_handle: self.handle)
+    follower = User.find_by(github_handle: handle)
     friendship = Friendship.find_by(user_id: current_user.id, friend_id: follower.id) || Friendship.find_by(friend_id: current_user.id, user_id: follower.id)
     if friendship
       true

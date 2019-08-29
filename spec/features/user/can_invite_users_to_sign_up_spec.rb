@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'As a registered github user' do
@@ -8,8 +10,6 @@ describe 'As a registered github user' do
 
   it 'I can invite another github user with an email' do
     VCR.use_cassette('invite_github_user_visible_email', record: :new_episodes) do
-
-
       visit '/dashboard'
       click_link 'Send an Invite'
 

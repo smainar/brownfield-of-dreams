@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'A User on dashboard page' do
@@ -12,7 +14,7 @@ describe 'A User on dashboard page' do
       expect(page).to have_css('.github-followers', count: 5)
 
       within(first('.github-followers')) do
-        expect(page).to have_link("kylecornelissen")
+        expect(page).to have_link('kylecornelissen')
       end
     end
   end

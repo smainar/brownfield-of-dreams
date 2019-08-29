@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :user do
-    email  { Faker::Internet.email }
+    email { Faker::Internet.email }
     first_name { Faker::Dog.name }
     last_name { Faker::Artist.name }
     password { Faker::Color.color_name }
@@ -14,7 +16,7 @@ FactoryBot.define do
   factory :github_user, parent: :user do
     github_token { ENV['GITHUB_API_KEY'] }
     github_handle { 'MillsProvosty' }
-    github_id { 01234 }
-    github_url { 'https://github.com/millsprovosty'}
+    github_id { 0o1234 }
+    github_url { 'https://github.com/millsprovosty' }
   end
 end

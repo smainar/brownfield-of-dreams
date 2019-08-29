@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GithubFindService
   def initialize(user, handle)
     @user = user
@@ -13,18 +15,19 @@ class GithubFindService
   end
 
   private
-    def conn
-      Faraday.new(url: "https://api.github.com") do |faraday|
-        faraday.headers["Authorization"] = 'token ' + user.github_token
-        faraday.adapter Faraday.default_adapter
-      end
-    end
 
-    def get_json(url)
-      response = conn.get(url)
-      JSON.parse(response.body, symbolize_names: true)
+  def conn
+    Faraday.new(url: 'https://api.github.com') do |faraday|
+      faraday.headers['Authorization'] = 'token ' + user.github_token
+      faraday.adapter Faraday.default_adapter
     end
+  end
 
-    attr_reader :handle,
-                :user
+  def get_json(url)
+    response = conn.get(url)
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  attr_reader :handle,
+              :user
 end

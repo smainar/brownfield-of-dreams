@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserShowFacade
   def initialize(current_user)
     @user = current_user
@@ -33,9 +35,9 @@ class UserShowFacade
 
   private
 
-    def github_service
-      @github_service ||= GithubService.new(user)
-    end
+  def github_service
+    @github_service ||= GithubService.new(user)
+  end
 
-    attr_reader :user
+  attr_reader :user
 end

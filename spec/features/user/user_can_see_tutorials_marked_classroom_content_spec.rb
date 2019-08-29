@@ -1,7 +1,9 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-describe "As a logged in user", type: :feature do
-  describe "Classroom Content" do
+require 'rails_helper'
+
+describe 'As a logged in user', type: :feature do
+  describe 'Classroom Content' do
     it "tutorials marked as 'classroom content' are viewable only if the user is logged in" do
       VCR.use_cassette('logged_in_user_sees_classroom_content', record: :new_episodes) do
         user = create(:user)
