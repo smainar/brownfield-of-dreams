@@ -5,4 +5,10 @@ class UserMailer < ApplicationMailer
     @user = user
     mail(to: user.email, subject: "Please Activate Your Account")
   end
+
+  def invite_user(invitee, inviter, invitee_email)
+    @invitee = invitee
+    @inviter = inviter
+    mail(to: invitee_email, subject: "You've been invited to create an account!")
+  end
 end
