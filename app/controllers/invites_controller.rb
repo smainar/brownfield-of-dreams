@@ -4,35 +4,28 @@ class InvitesController < ApplicationController
   end
 
   def create
-    user = GithubFindService.new(current_user, params[:github_handle]).find_by_handle
-    binding.pry
-      #find the user with params
-      #UserMailer.invite(invitee, current_user.github_handle).deliver_now
+    if invitee.nil?
+      flash[:error] = "Github user not found!"
+    elsif invitee_email.nil?
+      flash[:error] = "The Github user you selected doesn't have an email address associated with their account."
+    else
+      flash[:success] = "Successfully sent invite!"
+      UserMailer.invite(invitee, inviter, invitee_email).deliver_now
+    end
       redirect_to dashboard_path
   end
+
+  private
+    def invitee_email
+      GithubFindService.new(current_user, params[:github_handle]).find_email_by_handle
+    end
+
+    def inviter
+      current_user.github_handle
+    end
+
+    def invitee
+      GithubFindService.new(current_user, params[:github_handle]).find_invitee
+    end
+
 end
-  #
-  #
-  #
-  # def create
-  #   user = find_github_user(current_user.token("github"), params[:"Github Handle"])
-  #   if user.keys.include?(:message) && user[:message] == "Not Found"
-  #     flash[:error] = "Github user not found!"
-  #   elsif user[:email].nil?
-  #     flash[:error] = "The Github user you selected doesn't have an email address associated with their account."
-  #   else
-  #     flash[:success] = "Successfully sent invite!"
-  #     ActivateMailer.invite(user, current_user.github_handle).deliver_now
-  #   end
-  #   redirect_to dashboard_path
-  # end
-  #
-  # private
-  #
-  # def service(token)
-  #   @_service ||= GithubService.new(token)
-  # end
-  #
-  # def find_github_user(token, handle)
-  #   @_user_data ||= service(token).user_lookup(handle)
-  # end

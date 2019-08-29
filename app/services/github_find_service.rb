@@ -6,7 +6,10 @@ class GithubFindService
 
   def find_email_by_handle
     get_json("/users/#{handle}")[:email]
-    binding.pry
+  end
+
+  def find_invitee
+    get_json("/users/#{handle}")[:login]
   end
 
   private
