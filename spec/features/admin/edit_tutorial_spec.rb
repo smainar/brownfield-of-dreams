@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'An Admin can edit a tutorial' do
+describe 'An Admin receives a flash message when they cannot complete editing a tutorial' do
   let(:tutorial) { create(:tutorial) }
   let(:admin)    { create(:admin) }
 
