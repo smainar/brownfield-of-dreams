@@ -1,7 +1,9 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-describe "As a visitor", type: :feature do
-  describe "Tutorials - Classroom Content" do
+require 'rails_helper'
+
+describe 'As a visitor', type: :feature do
+  describe 'Tutorials - Classroom Content' do
     it "tutorials marked as 'classroom content' are invisible to visitors" do
       VCR.use_cassette('hide_classroom_content_from_visitors', record: :new_episodes) do
         user = create(:user)

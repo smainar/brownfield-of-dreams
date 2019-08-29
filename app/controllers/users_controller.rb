@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def show
     render locals: {
@@ -31,6 +33,6 @@ class UsersController < ApplicationController
     UserMailer.account_activation_email(user).deliver_now
     session[:user_id] = user.id
     flash[:success] = "Logged in as #{user.email}"
-    flash[:warning] = "This account has not yet been activated. Please check your email."
+    flash[:warning] = 'This account has not yet been activated. Please check your email.'
   end
 end
