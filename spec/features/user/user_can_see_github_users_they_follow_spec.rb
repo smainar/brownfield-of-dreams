@@ -13,7 +13,6 @@ describe "As a logged in user" do
         expect(page).to have_css(".github-following", count: 5)
 
         within(first(".github-following")) do
-          save_and_open_page
           expect(page).to have_link("pschlatt")
         end
       end
